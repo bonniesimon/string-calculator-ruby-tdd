@@ -13,4 +13,8 @@ class StringCalculatorTest < Minitest::Test
   def test_addition_of_a_single_number
     assert_equal 1, @calculator.add("1")
   end
+
+  def test_addition_of_two_numbers_with_comma_delimitor
+    assert_equal 3, @calculator.add("1,2")
+  end
 end
