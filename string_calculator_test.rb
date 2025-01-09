@@ -46,4 +46,7 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 3, @calculator.add("//;\n1;2")
   end
 
+  def test_add_should_handle_multi_character_custom_delimiter
+    assert_equal 18, @calculator.add("//***\n1***5***12")
+  end
 end
