@@ -41,6 +41,8 @@ class StringCalculator
     end
 
     def validate!(numbers)
-      raise NegativeNumberError if numbers.any? {|n| n < 0}
+      negative_numbers = numbers.select(&:negative?)
+
+      raise NegativeNumberError, "negative numbers not allowed #{negative_numbers.first}" unless negative_numbers.empty?
     end
 end
