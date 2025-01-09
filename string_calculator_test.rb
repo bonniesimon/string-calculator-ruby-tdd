@@ -22,4 +22,7 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 12, @calculator.add("1, 2, 4, 3, 2")
   end
 
+  def test_add_handles_multiple_numbers_with_comma_delimiter_test_2
+    assert_equal 25, @calculator.add("1,3,5,6,7,3")
+  end
 end
