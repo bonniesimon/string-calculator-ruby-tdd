@@ -41,4 +41,9 @@ class StringCalculatorTest < Minitest::Test
   def test_add_numbers_which_are_greater_than_9
     assert_equal 232, @calculator.add("90,4,33\n5,7,91\n2\n")
   end
+
+  def test_add_should_handle_custom_delimiters
+    assert_equal 3, @calculator.add("//;\n1;2")
+  end
+
 end
