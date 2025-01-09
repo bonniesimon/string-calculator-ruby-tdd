@@ -37,4 +37,8 @@ class StringCalculatorTest < Minitest::Test
   def test_add_multiple_numbers_with_newline_and_comma_as_delimiters_test_2
     assert_equal 39, @calculator.add("9,4,3\n5,7,9\n2\n")
   end
+
+  def test_add_numbers_which_are_greater_than_9
+    assert_equal 232, @calculator.add("90,4,33\n5,7,91\n2\n")
+  end
 end
