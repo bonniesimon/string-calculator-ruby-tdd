@@ -4,7 +4,7 @@ class StringCalculator
 
     numbers = get_numbers_from_input(input)
 
-    return numbers.reduce(0) {|sum, num| sum + num}
+    return numbers.reduce(&:+)
   end
 
   private
