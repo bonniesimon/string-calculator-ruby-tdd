@@ -6,7 +6,7 @@ class StringCalculator
 
     numbers = parse_numbers(input)
 
-    return numbers.reduce(&:+)
+    calculate_sum(numbers)
   end
 
   private
@@ -19,5 +19,9 @@ class StringCalculator
 
     def delimiters
       [",", "\n"]
+    end
+
+    def calculate_sum(numbers)
+      numbers.reduce(&:+)
     end
 end
