@@ -29,4 +29,12 @@ class StringCalculatorTest < Minitest::Test
   def test_add_handles_new_line_and_comma_as_delimiter
     assert_equal 6, @calculator.add("1\n2,3")
   end
+
+  def test_add_multiple_numbers_with_newline_and_comma_as_delimiters_test_1
+    assert_equal 30, @calculator.add("1\n2\n5,6,7\n9")
+  end
+
+  def test_add_multiple_numbers_with_newline_and_comma_as_delimiters_test_2
+    assert_equal 39, @calculator.add("9,4,3\n5,7,9\n2\n")
+  end
 end
