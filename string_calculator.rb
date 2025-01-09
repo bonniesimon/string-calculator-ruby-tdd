@@ -18,10 +18,7 @@ class StringCalculator
     def parse_numbers(input)
       delimiter, expression_string = parse_delimiter_and_expression_string(input)
 
-      numbers = expression_string
-        .split(Regexp.union(delimiter))
-        .map(&:to_i)
-
+      numbers = extract_numbers(delimiter, expression_string)
       validate!(numbers)
 
       numbers
@@ -38,6 +35,12 @@ class StringCalculator
       expression_string = input.split("\n", 2)[1]
 
       return [delimiter, expression_string]
+    end
+
+    def extract_numbers(delimiter, expression_string)
+      expression_string
+              .split(Regexp.union(delimiter))
+              .map(&:to_i)
     end
 
     def validate!(numbers)
