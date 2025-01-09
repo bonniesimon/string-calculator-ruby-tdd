@@ -1,5 +1,5 @@
 class StringCalculator
-  def add
-    raise "NotImplemented"
+  def add(input)
+    return 0 if input.empty?
   end
 end
