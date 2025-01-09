@@ -51,8 +51,10 @@ class StringCalculatorTest < Minitest::Test
   end
 
   def test_negative_numbers_in_the_expression_should_raise_error
-    assert_raises NegativeNumberError do
+    error = assert_raises NegativeNumberError do
       @calculator.add("9,3,4,-5")
     end
+
+    assert_equal "negative numbers not allowed -5", error.message
   end
 end
