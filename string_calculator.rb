@@ -12,6 +12,12 @@ class StringCalculator
   private
 
     def get_numbers_from_input(input)
-      input.split(",").map(&:to_i)
+      input
+        .split(Regexp.union(delimiters))
+        .map(&:to_i)
+    end
+
+    def delimiters
+      [",", "\n"]
     end
 end
