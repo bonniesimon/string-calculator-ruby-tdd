@@ -41,6 +41,7 @@ class StringCalculator
       expression_string
               .split(Regexp.union(delimiter))
               .map(&:to_i)
+              .select{ |num| num <= 1000 }
     end
 
     def validate!(numbers)
