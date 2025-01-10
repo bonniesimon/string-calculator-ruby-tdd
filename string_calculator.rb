@@ -52,17 +52,9 @@ class StringCalculator
 
     def parse_delimiter(input)
       delimiter = input.split(Regexp.union(["//", "\n"]))[1]
-      delimiter = delimiter.tr("[", "").tr("]", "") if is_multi_char_delimiter(delimiter)
-      delimiter = delimiter.split(Regexp.union("[", "]")).reject(&:empty?) if has_multiple_delimiters(delimiter)
+
+      delimiter = delimiter.split(/\[(.*?)\]/).reject(&:empty?)
 
       delimiter
-    end
-
-    def has_multiple_delimiters(delimiter)
-      delimiter.count("[") > 1 && delimiter.count("]") > 1
-    end
-
-    def is_multi_char_delimiter(delimiter)
-      delimiter.start_with?("[") && delimiter.end_with?("]") && !has_multiple_delimiters(delimiter)
     end
 end
