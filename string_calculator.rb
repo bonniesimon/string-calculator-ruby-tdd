@@ -47,7 +47,7 @@ class StringCalculator
     def validate!(numbers)
       negative_numbers = numbers.select(&:negative?)
 
-      raise NegativeNumberError, "negative numbers not allowed #{negative_numbers.join(",")}" unless negative_numbers.empty?
+      raise NegativeNumberError, negative_numbers unless negative_numbers.empty?
     end
 
     def parse_delimiter(input)
