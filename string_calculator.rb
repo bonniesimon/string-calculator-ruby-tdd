@@ -32,6 +32,7 @@ class StringCalculator
       return [DELIMITERS, input] unless input.start_with?("//")
 
       delimiter = input.split(Regexp.union(["//", "\n"]))[1]
+      delimiter = delimiter.tr("[", "").tr("]", "") if delimiter.start_with?("[") && delimiter.end_with?("]")
       expression_string = input.split("\n", 2)[1]
 
       return [delimiter, expression_string]
