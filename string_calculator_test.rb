@@ -78,4 +78,7 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 6, @calculator.add("//[**][%*]\n1**2%*3")
   end
 
+  def test_should_allow_multiple_multi_char_delimiters_test_2
+    assert_equal 10, @calculator.add("//[**][%*][^$]\n1**2%*3^$4")
+  end
 end
