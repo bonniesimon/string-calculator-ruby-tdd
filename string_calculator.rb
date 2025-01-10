@@ -32,7 +32,7 @@ class StringCalculator
       return [DELIMITERS, input] unless input.start_with?("//")
 
       delimiter = input.split(Regexp.union(["//", "\n"]))[1]
-      delimiter = delimiter.tr("[", "").tr("]", "") if delimiter.start_with?("[") && delimiter.end_with?("]")
+      delimiter = delimiter.tr("[", "").tr("]", "") if is_multi_char_delimiter(delimiter)
       expression_string = input.split("\n", 2)[1]
 
       return [delimiter, expression_string]
@@ -49,5 +49,9 @@ class StringCalculator
       negative_numbers = numbers.select(&:negative?)
 
       raise NegativeNumberError, "negative numbers not allowed #{negative_numbers.join(",")}" unless negative_numbers.empty?
+    end
+
+    def is_multi_char_delimiter(delimiter)
+      delimiter.start_with?("[") && delimiter.end_with?("]")
     end
 end
