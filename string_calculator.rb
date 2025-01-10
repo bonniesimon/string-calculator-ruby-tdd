@@ -3,6 +3,7 @@ require_relative "errors/negative_number_error"
 
 class StringCalculator
   DELIMITERS = [",", "\n"].freeze
+  MAX_ALLOWED_NUMBER = 1000
 
   def add(input)
     return 0 if input.empty?
@@ -40,7 +41,7 @@ class StringCalculator
       expression_string
               .split(Regexp.union(delimiter))
               .map(&:to_i)
-              .select{ |num| num <= 1000 }
+              .select{ |num| num <= MAX_ALLOWED_NUMBER }
     end
 
     def validate!(numbers)
