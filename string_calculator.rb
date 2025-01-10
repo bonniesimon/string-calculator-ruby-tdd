@@ -31,8 +31,7 @@ class StringCalculator
     def parse_delimiter_and_expression_string(input)
       return [DELIMITERS, input] unless input.start_with?("//")
 
-      delimiter = input.split(Regexp.union(["//", "\n"]))[1]
-      delimiter = delimiter.tr("[", "").tr("]", "") if is_multi_char_delimiter(delimiter)
+      delimiter = parse_delimiter(input)
       expression_string = input.split("\n", 2)[1]
 
       return [delimiter, expression_string]
@@ -49,6 +48,13 @@ class StringCalculator
       negative_numbers = numbers.select(&:negative?)
 
       raise NegativeNumberError, "negative numbers not allowed #{negative_numbers.join(",")}" unless negative_numbers.empty?
+    end
+
+    def parse_delimiter(input)
+      delimiter = input.split(Regexp.union(["//", "\n"]))[1]
+      delimiter = delimiter.tr("[", "").tr("]", "") if is_multi_char_delimiter(delimiter)
+
+      delimiter
     end
 
     def is_multi_char_delimiter(delimiter)
