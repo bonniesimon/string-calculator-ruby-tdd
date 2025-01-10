@@ -1,6 +1,5 @@
 require "debug"
-require_relative "errors"
-
+require_relative "errors/negative_number_error"
 
 class StringCalculator
   DELIMITERS = [",", "\n"].freeze
