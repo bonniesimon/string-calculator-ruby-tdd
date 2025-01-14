@@ -10,6 +10,8 @@ class StringCalculator
 
     delimiter, expression_string = parse_delimiter_and_expression_string(input)
 
+    return multiply(delimiter, expression_string) if multiply?(delimiter)
+
     add(delimiter, expression_string)
   end
 
@@ -21,6 +23,18 @@ class StringCalculator
       calculate_sum(numbers)
     end
 
+    def multiply(delimiter, expression_string)
+      numbers = parse_numbers(delimiter, expression_string)
+
+      calculate_product(numbers)
+    end
+
+    def multiply?(delimiter)
+      return true if delimiter.size == 1 && delimiter.first == "*"
+
+      false
+    end
+
     def parse_numbers(delimiter, expression_string)
       numbers = extract_numbers(delimiter, expression_string)
       validate!(numbers)
@@ -30,6 +44,10 @@ class StringCalculator
 
     def calculate_sum(numbers)
       numbers.reduce(&:+)
+    end
+
+    def calculate_product(numbers)
+      numbers.reduce(&:*)
     end
 
     def parse_delimiter_and_expression_string(input)
