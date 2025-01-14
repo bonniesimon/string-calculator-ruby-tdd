@@ -1,7 +1,9 @@
-class NegativeNumberError < StandardError
-  def initialize(numbers)
-    message = "negative numbers not allowed #{numbers.join(",")}"
+module Errors
+  class NegativeNumberError < StandardError
+    def initialize(numbers)
+      message = "negative numbers not allowed #{numbers.join(",")}"
 
-    super(message)
+      super(message)
+    end
   end
 end
