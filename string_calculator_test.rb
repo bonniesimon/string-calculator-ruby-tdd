@@ -81,4 +81,8 @@ class StringCalculatorTest < Minitest::Test
   def test_should_allow_multiple_multi_char_delimiters_test_2
     assert_equal 10, @calculator.process("//[**][%*][^$]\n1**2%*3^$4")
   end
+
+  def test_should_allow_star_delimiter_to_perform_multiplication
+    assert_equal 6, @calculator.process("//*\n2*3")
+  end
 end
