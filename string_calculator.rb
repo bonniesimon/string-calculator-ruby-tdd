@@ -56,7 +56,7 @@ class StringCalculator
       delimiter = parse_delimiter(input)
       expression_string = input.split("\n", 2)[1]
 
-      return [delimiter, expression_string]
+      [delimiter, expression_string]
     end
 
     def extract_numbers(delimiter, expression_string)
