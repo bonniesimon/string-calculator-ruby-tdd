@@ -5,7 +5,7 @@ class StringCalculator
   DELIMITERS = [",", "\n"].freeze
   MAX_ALLOWED_NUMBER = 1000
 
-  def add(input)
+  def process(input)
     return 0 if input.empty?
 
     numbers = parse_numbers(input)
