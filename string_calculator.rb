@@ -8,20 +8,24 @@ class StringCalculator
   def process(input)
     return 0 if input.empty?
 
-    numbers = parse_numbers(input)
+    delimiter, expression_string = parse_delimiter_and_expression_string(input)
 
-    calculate_sum(numbers)
+    add(delimiter, expression_string)
   end
 
   private
 
-    def parse_numbers(input)
-      delimiter, expression_string = parse_delimiter_and_expression_string(input)
-
+    def parse_numbers(delimiter, expression_string)
       numbers = extract_numbers(delimiter, expression_string)
       validate!(numbers)
 
       numbers
+    end
+
+    def add(delimiter, expression_string)
+      numbers = parse_numbers(delimiter, expression_string)
+
+      calculate_sum(numbers)
     end
 
     def calculate_sum(numbers)
